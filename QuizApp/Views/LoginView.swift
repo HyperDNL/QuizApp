@@ -13,14 +13,14 @@ struct LoginView: View {
                     .resizable()
                     .frame(width: 128, height: 128)
                     .padding()
-                Text("Inicia Sesión")
+                Text("Inicio de Sesión")
                     .font(.title)
                     .bold()
                     .foregroundColor(Color("BlackText"))
                 TextField("E-Mail", text: $email)
                     .padding()
                     .background(Color("Beige").opacity(0.2))
-                    .foregroundColor(Color("BlackText"))
+                    .foregroundColor(Color("BlackRed"))
                     .cornerRadius(10)
                     .padding(.horizontal)
                     .autocapitalization(.none)
@@ -29,7 +29,7 @@ struct LoginView: View {
                     .background(Color("Beige").opacity(0.2))
                     .foregroundColor(Color("BlackText"))
                     .cornerRadius(10)
-                    .padding(.horizontal)
+                    .padding(.horizontal).padding(.bottom)
                 Button(action: {
                     if email == "test@test.com" && password == "passtest" {
                         isHomeScreenActive = true
@@ -38,8 +38,8 @@ struct LoginView: View {
                         isHomeScreenActive = false
                     }
                 }, label: {
-                    Text("Iniciar sesión")
-                        .font(.headline)
+                    Text("Iniciar Sesión")
+                        .font(.title2).fontWeight(.semibold)
                         .foregroundColor(Color("BlackText"))
                         .padding()
                         .frame(maxWidth: .infinity)

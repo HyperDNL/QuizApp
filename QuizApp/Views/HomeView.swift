@@ -2,47 +2,50 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var triviaManager = TriviaManager()
-    @State private var selectedCategories = Set<String>()
     @State private var categories: [TriviaCategory] = []
+    @State private var selectedCategoryId: Int? = nil
+    @State private var isActive = false
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("Selecciona las categorías:")
-                .font(.headline)
-                .foregroundColor(Color("BlackText"))
-            
-            ScrollView {
-                VStack(alignment: .leading) {
-                    ForEach(categories, id: \.id) { category in
-                        Button(action: {
-                            if selectedCategories.contains(category.name) {
-                                selectedCategories.remove(category.name)
-                            } else {
-                                selectedCategories.insert(category.name)
-                            }
-                        }) {
-                            HStack {
-                                Text(category.name)
-                                Spacer()
-                                if selectedCategories.contains(category.name) {
-                                    Image(systemName: "checkmark").foregroundColor(Color("BlackText"))
-                                }
+        NavigationView{
+            VStack(alignment: .leading) {
+                Text("Selecciona la categoría:")
+                    .font(.title)
+                    .foregroundColor(Color("BlackText"))
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHGrid(rows: [
+                        GridItem(.flexible()),
+                        GridItem(.flexible())
+                    ]) {
+                        ForEach(categories, id: \.id) { category in
+                            Button(action: {
+                                selectedCategoryId = category.id
+                                isActive = true
+                            }) {
+                                CardComponent(category: category.name)
+                                    .padding(.horizontal, 5)
                             }
                         }
-                        .padding(.vertical, 5)
-                    }.foregroundColor(Color("BlackText"))
+                    }
+                }
+                .frame(height: 160)
+            }
+            .padding()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .edgesIgnoringSafeArea(.all)
+            .background(Color("WhiteBackground"))
+            .onAppear {
+                Task.init {
+                    categories = await triviaManager.fetchTriviaCategories()
                 }
             }
-            .frame(height: 400)
-        }
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .edgesIgnoringSafeArea(.all)
-        .background(Color("WhiteBackground"))
-        .onAppear {
-            Task.init {
-                categories = await triviaManager.fetchTriviaCategories()
-            }
+            NavigationLink(
+                destination: TriviaView()
+                    .environmentObject(TriviaManager(idCategory: selectedCategoryId)),
+                isActive: $isActive,
+                label: { EmptyView() }
+            )
         }
     }
 }

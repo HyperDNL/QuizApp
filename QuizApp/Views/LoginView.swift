@@ -43,7 +43,7 @@ struct LoginView: View {
                         .foregroundColor(Color("BlackText"))
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color("AccentColor"))
+                        .background(Color("YellowGod"))
                         .cornerRadius(10)
                         .padding(.horizontal)
                 })

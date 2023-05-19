@@ -22,7 +22,7 @@ struct Trivia: Decodable {
                 return ""
             }
         }
-
+        
         var answers: [Answer] {
             do {
                 let correct = [Answer(text: try AttributedString(markdown: correctAnswer), isCorrect: true)]

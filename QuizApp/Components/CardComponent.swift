@@ -6,11 +6,10 @@ struct CardComponent: View {
     var body: some View {
         Text(category)
             .font(.headline)
-            .padding()
+            .padding(24)
             .background(Color("YellowGod"))
             .foregroundColor(Color("BlackText"))
             .cornerRadius(10)
-            .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 

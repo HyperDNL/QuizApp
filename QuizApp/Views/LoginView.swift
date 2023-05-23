@@ -4,6 +4,7 @@ struct LoginView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var showError: Bool = false
+    @State private var isSecure = true
     @State private var isHomeScreenActive = false
     
     var body: some View {
@@ -36,12 +37,45 @@ struct LoginView: View {
                         Text(verbatim: "Contraseña").font(.headline).foregroundColor(.gray)
                             .padding(.horizontal, 32)
                     }
-                    SecureField("", text: $password)
-                        .padding()
-                        .background(Color("Beige").opacity(0.2))
-                        .foregroundColor(Color("WhiteBackground"))
-                        .cornerRadius(10)
-                        .padding(.horizontal)
+                    if isSecure{
+                        SecureField("", text: $password)
+                            .textContentType(.password)
+                            .padding()
+                            .background(Color("Beige").opacity(0.2))
+                            .foregroundColor(Color("WhiteBackground"))
+                            .cornerRadius(10)
+                            .padding(.horizontal)
+                            .overlay(
+                                Button(action: {
+                                    isSecure.toggle()
+                                }, label: {
+                                    Image(systemName: "eye")
+                                        .foregroundColor(Color("WhiteBackground"))
+                                })
+                                .padding(.trailing, 32),
+                                alignment: .trailing
+                            )
+                    } else{
+                        TextField("", text: $password)
+                            .autocapitalization(.none)
+                            .textContentType(.password)
+                            .padding()
+                            .background(Color("Beige").opacity(0.2))
+                            .foregroundColor(Color("WhiteBackground"))
+                            .cornerRadius(10)
+                            .padding(.horizontal)
+                            .overlay(
+                                Button(action: {
+                                    isSecure.toggle()
+                                }, label: {
+                                    Image(systemName: "eye.slash")
+                                        .foregroundColor(Color("WhiteBackground"))
+                                })
+                                .padding(.trailing, 32),
+                                alignment: .trailing
+                                
+                            )
+                    }
                 }.padding(.bottom)
                 Button(action: {
                     if email == "test@test.com" && password == "passtest" {

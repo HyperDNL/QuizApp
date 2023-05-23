@@ -5,11 +5,12 @@ struct HomeView: View {
     @State private var categories: [TriviaCategory] = []
     @State private var selectedCategoryId: Int? = nil
     @State private var isActive = false
+    @State private var isActiveRandom = false
     
     var body: some View {
         NavigationView{
             VStack(alignment: .leading) {
-                Text("Selecciona la categoría:")
+                Text("Selecciona una categoría:")
                     .font(.title)
                     .foregroundColor(Color("WhiteBackground"))
                 
@@ -21,15 +22,25 @@ struct HomeView: View {
                         ForEach(categories, id: \.id) { category in
                             Button(action: {
                                 selectedCategoryId = category.id
+                                isActiveRandom = false
                                 isActive = true
                             }) {
                                 CardComponent(category: category.name)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
                                     .padding(.horizontal, 5)
                             }
                         }
                     }
                 }
-                .frame(height: 160)
+                .frame(height: 200)
+                Button(action: {
+                    isActiveRandom = true
+                    isActive = true
+                }) {
+                    CardComponent(category: "Aleatorio")
+                }
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.vertical, 40)
             }
             .padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -41,8 +52,9 @@ struct HomeView: View {
                 }
             }
             NavigationLink(
-                destination: TriviaView()
-                    .environmentObject(TriviaManager(idCategory: selectedCategoryId)),
+                destination: !isActiveRandom ? TriviaView()
+                    .environmentObject(TriviaManager(idCategory: selectedCategoryId)) : TriviaView()
+                    .environmentObject(TriviaManager()),
                 isActive: $isActive,
                 label: { EmptyView() }
             )

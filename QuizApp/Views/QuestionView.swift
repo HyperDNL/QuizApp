@@ -12,7 +12,7 @@ struct QuestionView: View {
                 Spacer()
                 
                 Text("\(triviaManager.index + 1) out of \(triviaManager.length)")
-                    .foregroundColor(Color("BlackText"))
+                    .foregroundColor(Color("Beige"))
                     .fontWeight(.heavy)
             }
             
@@ -22,7 +22,7 @@ struct QuestionView: View {
                 Text(triviaManager.question)
                     .font(.system(size: 20))
                     .bold()
-                    .foregroundColor(Color("BlackText"))
+                    .foregroundColor(Color("WhiteBackground"))
                 
                 ForEach(triviaManager.answerChoices, id: \.id) { answer in
                     AnswerRow(answer: answer)
@@ -41,7 +41,7 @@ struct QuestionView: View {
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .background(Color("WhiteBackground"))
+        .background(Color("BlackRed"))
         .navigationBarHidden(true)
     }
 }

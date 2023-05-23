@@ -5,6 +5,9 @@ struct ProfileView: View {
     @State private var name: String = "Usuario Test"
     @State private var email: String = "test@test.com"
     @State private var age: String = "22 años"
+    @State private var auxName: String = ""
+    @State private var auxEmail: String = ""
+    @State private var auxiAge: String = ""
     @State private var rank: String = "Principante"
     @State private var categoryFav: String = "Entertainment: Video Games"
     
@@ -30,10 +33,10 @@ struct ProfileView: View {
             
             Spacer()
         }
-        .foregroundColor(Color("BlackText"))
+        .foregroundColor(Color("WhiteBackground"))
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color("WhiteBackground"))
+        .background(Color("BlackRed"))
     }
     
     private func editModeView() -> some View {
@@ -42,25 +45,26 @@ struct ProfileView: View {
                 VStack(alignment: .leading){
                     Text("Nombre")
                         .font(.headline)
-                    TextField("Nombre", text: $name)
+                    TextField("Nombre", text: $auxName)
                         .font(.subheadline)
-                        .foregroundColor(Color("BlackText")).opacity(0.8)
+                        .foregroundColor(Color("Beige")).opacity(0.8)
                 }.padding(.vertical, 10)
                 
                 VStack(alignment: .leading){
                     Text("Email")
                         .font(.headline)
-                    TextField("Email", text: $email)
+                    TextField("Email", text: $auxEmail)
+                        .autocapitalization(.none)
                         .font(.subheadline)
-                        .foregroundColor(Color("BlackText")).opacity(0.8)
+                        .foregroundColor(Color("Beige")).opacity(0.8)
                 }.padding(.vertical, 10)
                 
                 VStack(alignment:.leading){
                     Text("Edad")
                         .font(.headline)
-                    TextField("Edad", text: $age)
+                    TextField("Edad", text: $auxiAge)
                         .font(.subheadline)
-                        .foregroundColor(Color("BlackText")).opacity(0.8)
+                        .foregroundColor(Color("Beige")).opacity(0.8)
                 }.padding(.vertical, 10)
             }.padding()
             
@@ -80,6 +84,15 @@ struct ProfileView: View {
                 
                 Button(action: {
                     isEditing = false
+                    if (!auxName.isEmpty){
+                        name = auxName
+                    }
+                    if(!auxEmail.isEmpty){
+                        email = auxEmail
+                    }
+                    if(!auxiAge.isEmpty){
+                        age = auxiAge
+                    }
                 }) {
                     Text("Guardar")
                         .padding()
@@ -99,7 +112,7 @@ struct ProfileView: View {
             
             Text(email)
                 .font(.title3)
-                .foregroundColor(Color("BlackText")).opacity(0.8)
+                .foregroundColor(Color("Beige")).opacity(0.8)
             Divider()
             VStack{
                 InfoRowView(title: "Edad", value: age)
@@ -132,11 +145,11 @@ struct InfoRowView: View {
             if !value.isEmpty {
                 Text(value)
                     .font(.subheadline)
-                    .foregroundColor(Color("BlackText")).opacity(0.8)
+                    .foregroundColor(Color("Beige")).opacity(0.8)
             } else {
-                Text("Editar")
+                Text("")
                     .font(.subheadline)
-                    .foregroundColor(Color("BlackText")).opacity(0.8)
+                    .foregroundColor(Color("Beige")).opacity(0.8)
             }
         }
         .padding(.vertical, 10)

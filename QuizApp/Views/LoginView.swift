@@ -12,24 +12,37 @@ struct LoginView: View {
                 Image("QuizApp-Logo")
                     .resizable()
                     .frame(width: 128, height: 128)
-                    .padding()
+                    .padding().shadow(color: .gray,radius: 5)
                 Text("Inicio de Sesión")
                     .font(.title)
                     .bold()
-                    .foregroundColor(Color("BlackText"))
-                TextField("E-Mail", text: $email)
-                    .padding()
-                    .background(Color("Beige").opacity(0.2))
-                    .foregroundColor(Color("BlackRed"))
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-                    .autocapitalization(.none)
-                SecureField("Contraseña", text: $password)
-                    .padding()
-                    .background(Color("Beige").opacity(0.2))
-                    .foregroundColor(Color("BlackText"))
-                    .cornerRadius(10)
-                    .padding(.horizontal).padding(.bottom)
+                    .foregroundColor(Color("WhiteBackground"))
+                ZStack(alignment: .leading){
+                    if(email.isEmpty){
+                        Text(verbatim: "example@example.com").font(.headline).foregroundColor(.gray)
+                            .padding(.horizontal, 32)
+                            .padding(.vertical)
+                    }
+                    TextField("", text: $email)
+                        .padding()
+                        .background(Color("Beige").opacity(0.2))
+                        .foregroundColor(Color("WhiteBackground"))
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                        .autocapitalization(.none)
+                }
+                ZStack(alignment: .leading){
+                    if(password.isEmpty){
+                        Text(verbatim: "Contraseña").font(.headline).foregroundColor(.gray)
+                            .padding(.horizontal, 32)
+                    }
+                    SecureField("", text: $password)
+                        .padding()
+                        .background(Color("Beige").opacity(0.2))
+                        .foregroundColor(Color("WhiteBackground"))
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                }.padding(.bottom)
                 Button(action: {
                     if email == "test@test.com" && password == "passtest" {
                         isHomeScreenActive = true
@@ -55,7 +68,7 @@ struct LoginView: View {
             .padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .edgesIgnoringSafeArea(.all)
-            .background(Color("WhiteBackground"))
+            .background(Color("BlackRed"))
         }.navigationBarHidden(true)
     }
 }

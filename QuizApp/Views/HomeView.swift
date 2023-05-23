@@ -11,7 +11,7 @@ struct HomeView: View {
             VStack(alignment: .leading) {
                 Text("Selecciona la categoría:")
                     .font(.title)
-                    .foregroundColor(Color("BlackText"))
+                    .foregroundColor(Color("WhiteBackground"))
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: [
@@ -34,7 +34,7 @@ struct HomeView: View {
             .padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .edgesIgnoringSafeArea(.all)
-            .background(Color("WhiteBackground"))
+            .background(Color("BlackRed"))
             .onAppear {
                 Task.init {
                     categories = await triviaManager.fetchTriviaCategories()

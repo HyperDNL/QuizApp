@@ -4,7 +4,7 @@ struct WelcomeView: View {
     @State var selectedTab: Int = 0
     
     init(){
-        UITabBar.appearance().backgroundColor = UIColor(Color("Beige"))
+        UITabBar.appearance().backgroundColor = UIColor(Color("Beige").opacity(0.8))
         UITabBar.appearance().isTranslucent = true
         UITabBar.appearance().unselectedItemTintColor = UIColor(Color("BlackText").opacity(0.8))
     }

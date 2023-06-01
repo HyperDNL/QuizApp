@@ -4,22 +4,22 @@ The main purpose of the application is to offer a local trivia game that can be 
 
 ## Screenshots
 
-![Login Screen](https://res.cloudinary.com/dh9ph7mpz/image/upload/v1684861386/Quizapp/Simulator_Screenshot_-_iPhone_14_Pro_-_2023-05-23_at_10.42.20_kamj6u.png)
+![Login Screen](https://res.cloudinary.com/dh9ph7mpz/image/upload/v1685582433/Quizapp/Login_nnzexf.png)
 *Login Screen*
 
-![Login and Home](https://res.cloudinary.com/dh9ph7mpz/image/upload/v1684861386/Quizapp/Login_Capture_qqt9hy.gif)
+![Login and Home](https://res.cloudinary.com/dh9ph7mpz/image/upload/v1685582435/Quizapp/Login_Home_f6fkhj.gif)
 *Login and Home*
 
-![Home Screen](https://res.cloudinary.com/dh9ph7mpz/image/upload/v1684861716/Quizapp/Simulator_Screenshot_-_iPhone_14_Pro_-_2023-05-23_at_11.03.22_gaz34w.png)
+![Home Screen](https://res.cloudinary.com/dh9ph7mpz/image/upload/v1685582433/Quizapp/Home_zgqxuh.png)
 *Home Screen*
 
-![Home and Game Screen](https://res.cloudinary.com/dh9ph7mpz/image/upload/v1684861691/Quizapp/Game_Capture_hbliko.gif)
+![Home and Game Screen](https://res.cloudinary.com/dh9ph7mpz/image/upload/v1685582434/Quizapp/Trivia_Game_d9db01.gif)
 *Home and Game Screen*
 
-![Score Screen](https://res.cloudinary.com/dh9ph7mpz/image/upload/v1684861711/Quizapp/Simulator_Screenshot_-_iPhone_14_Pro_-_2023-05-23_at_11.07.52_ettwwh.png)
+![Score Screen](https://res.cloudinary.com/dh9ph7mpz/image/upload/v1685582433/Quizapp/Score_a274gs.png)
 *Score Screen*
 
-![Home and Profile Screen](https://res.cloudinary.com/dh9ph7mpz/image/upload/v1684861537/Quizapp/Profile_Capture_hvzxgj.gif)
+![Profile Screen](https://res.cloudinary.com/dh9ph7mpz/image/upload/v1685582435/Quizapp/Profile_izrcsz.gif)
 *Home and Profile Screen*
 
 ## Features

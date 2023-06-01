@@ -6,7 +6,8 @@ struct PrimaryButton: View {
     
     var body: some View {
         Text(text)
-            .foregroundColor(Color("BlackText"))
+            .foregroundColor(.white)
+            .font(.headline)
             .padding()
             .padding(.horizontal)
             .background(background)
